@@ -108,7 +108,7 @@ export default function App() {
       <div ref={wrapperRef} style={{ position: "relative", width: 400 }}>
         <input
           value={input}
-          placeholder="Search stops..."
+          placeholder="Search stops..." aria-label="Search for a stop"
           onChange={(e) => { setInput(e.target.value); setShowResults(true); }}
           style={{
             width: "100%",

@@ -156,7 +156,7 @@ export default function MapView({ lat, lng, routeLegs }: Props) {
   const center: LatLngExpression = [lat, lng];
 
   return (
-    <MapContainer center={center} zoom={13} style={{ height: 400, width: "100%" }}>
+    <MapContainer center={center} zoom={13} style={{ height: 400, width: "100%" }} aria-label="Oslo transit map">
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
       <BysykkelLayer />

@@ -11,10 +11,11 @@ type Props = {
 
 export default function NearbyStops({ stops, loading, error, onLocate, onSelect }: Props) {
   return (
-    <div style={{ marginTop: 12 }}>
+    <section aria-label="Nearby stops" style={{ marginTop: 12 }}>
       <button
         onClick={onLocate}
         disabled={loading}
+        aria-busy={loading}
         style={{
           padding: "6px 12px",
           cursor: "pointer",
@@ -27,14 +28,20 @@ export default function NearbyStops({ stops, loading, error, onLocate, onSelect 
         {loading ? "Locating..." : "📍 Nearby stops"}
       </button>
 
-      {error && <p style={{ color: "red", marginTop: 6 }}>{error}</p>}
+      {error && <p role="alert" style={{ color: "red", marginTop: 6 }}>{error}</p>}
 
       {stops.length > 0 && (
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 8 }}>
+        <div
+          role="list"
+          aria-label="Nearby stop options"
+          style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 8 }}
+        >
           {stops.map((s) => (
             <button
               key={s.id}
+              role="listitem"
               onClick={() => onSelect({ id: s.id, name: s.name, lat: s.lat, lon: s.lon })}
+              aria-label={`Select stop ${s.name}`}
               style={{
                 padding: "4px 10px",
                 borderRadius: 12,
@@ -50,6 +57,6 @@ export default function NearbyStops({ stops, loading, error, onLocate, onSelect 
           ))}
         </div>
       )}
-    </div>
+    </section>
   );
 }
