@@ -28,3 +28,18 @@ export interface FavouriteStop {
   lat: number;   // these stay as lat/lon — it's a different type
   lon: number;
 }
+export interface Call {
+  realtimeDeparture?: string;
+  expectedDepartureTime: string;
+  destinationDisplay?: { frontText?: string };
+  serviceJourney?: {
+    id?: string;
+    journeyPattern?: {
+      line?: {
+        id?: string;
+        publicCode?: string;
+        transportMode?: string;
+      };
+    };
+  };
+}
