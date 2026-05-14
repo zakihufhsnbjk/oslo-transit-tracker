@@ -84,12 +84,13 @@ export default function App() {
   }
 
   return (
-    <div style={{ padding: 20, fontFamily: "Arial", color: "var(--text)" }}>
+    <main style={{ padding: 20, fontFamily: "Arial", color: "var(--text)" }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
         <h1 style={{ margin: 0 }}>Oslo Transit Tracker</h1>
         <button
           onClick={toggle}
           title="Toggle dark mode"
+          aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
           style={{
             background: "transparent",
             border: "1px solid var(--border-strong)",
@@ -108,7 +109,8 @@ export default function App() {
       <div ref={wrapperRef} style={{ position: "relative", width: 400 }}>
         <input
           value={input}
-          placeholder="Search stops..." aria-label="Search for a stop"
+          placeholder="Search stops..."
+          aria-label="Search for a stop"
           onChange={(e) => { setInput(e.target.value); setShowResults(true); }}
           style={{
             width: "100%",
@@ -130,7 +132,7 @@ export default function App() {
             background: "var(--bg)",
             border: "1px solid var(--border-strong)",
             borderRadius: 4,
-            boxShadow: `0 4px 12px var(--shadow)`,
+            boxShadow: "0 4px 12px var(--shadow)",
             zIndex: 9999,
           }}>
             {results.map((s: FavouriteStop) => (
@@ -187,6 +189,6 @@ export default function App() {
       <hr style={{ borderColor: "var(--border)" }} />
 
       <JourneyPlanner onResult={setRouteLegs} />
-    </div>
+    </main>
   );
 }
