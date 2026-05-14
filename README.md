@@ -1,73 +1,35 @@
-# React + TypeScript + Vite
+# Oslo Transit Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A real-time public transport tracker for Oslo, built with React, TypeScript, and the [Entur](https://developer.entur.org/) GraphQL API.
 
-Currently, two official plugins are available:
+![CI](https://github.com/zakihufhsnbjk/oslo-transit-tracker/actions/workflows/ci.yml/badge.svg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- 🔍 Stop search powered by the Entur Geocoder API
+- 🚌 Live departures with countdown timers ("2 min", "Now")
+- 🎨 Colour-coded line badges matching Ruter transport modes
+- 🗺️ Interactive map with OpenStreetMap and Leaflet
+- 🗓️ Journey planner with route polyline rendering
+- ⭐ Favourite stops with persistent local storage
+- 🔗 Shareable URLs per stop
+- 📍 Nearby stops via geolocation
+- ⚡ Auto-refresh every 20 seconds
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **React 18** + **TypeScript**
+- **Vite**
+- **Leaflet** + **React-Leaflet** for maps
+- **Entur Journey Planner v3** (GraphQL)
+- **Entur Geocoder v1** (stop search)
+- GitHub Actions CI (type check + lint on every push)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```bash
+## Data Sources
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- [Entur Journey Planner API](https://developer.entur.org/pages-journey-planner-journey-planner-v3)
+- [Entur Geocoder API](https://developer.entur.org/pages-geocoder-api)
+- Map tiles © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors
